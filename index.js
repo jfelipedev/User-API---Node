@@ -9,6 +9,8 @@ const app = express();
 //Config JSON response
 app.use(express.json());
 
+app.use(cors());
+
 //Models
 const User = require("./models/User");
 
@@ -116,7 +118,7 @@ app.post("/auth/login", async (req, res) => {
       },
       secret
     );
-    res.status(200).json({msg: 'Autenticado:', token });
+    res.status(200).json({ msg: "Autenticado:", token });
   } catch (error) {
     res.status(500).json({ msg: "Failed to generate token" });
   }
